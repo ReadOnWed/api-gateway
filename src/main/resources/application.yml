@@ -16,10 +16,16 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: login-service
+        - id: member-service
           uri: lb://MEMBER-SERVICE
           predicates:
-            - Path=/auth/**
+            - Path=/memberInfo/**
+        - id: chat-service
+          uri: lb://chat
+          predicates:
+            - Path=/chat/**
+          filters:
+            - CustomAuthFilter
 
       globalcors:
         cors-configurations:

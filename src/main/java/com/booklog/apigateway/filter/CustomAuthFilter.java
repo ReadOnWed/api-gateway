@@ -40,12 +40,12 @@ public class CustomAuthFilter extends AbstractGatewayFilterFactory<CustomAuthFil
             log.info(":::::::::::::::::::::::::;;filter in:::::::::::::::::::::::::;;");
             System.out.println("filter in");
 
-            if (!request.getHeaders().containsKey("Access-Token")) {
+            if (!request.getHeaders().containsKey("access-token")) {
                 System.out.println("no-access");
                 return handleUnAuthorized(exchange); // 401 Error
             }
 
-            List<String> token = request.getHeaders().get("Access-Token");
+            List<String> token = request.getHeaders().get("access-token");
             String tokenString = Objects.requireNonNull(token).get(0);
             System.out.println(tokenString);
 
